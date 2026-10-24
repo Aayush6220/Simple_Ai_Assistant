@@ -3,14 +3,21 @@ from dotenv import load_dotenv
 import os
 
 load_dotenv()
-messages=[]
+
 client = OpenAI(
    base_url=os.getenv("BASE_URL"),
    api_key=os.getenv("API_KEY"),
    timeout=120.0
  
 )
+messages=[]
 
+messages.append(
+    {
+        "role": "system",
+        "content": "Act like a very humble agent and respond always under 20 words."
+    }
+)
 while True:  
  user_input = input("\nAayush: ")
  if user_input.lower() in ["exit", "quit","bye","goodbye","see you later"]:
